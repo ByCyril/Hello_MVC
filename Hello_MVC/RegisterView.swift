@@ -15,9 +15,7 @@ class RegisterView: UIView {
     private var confirmPasswordField: UITextField!
     
     private var doneButton: UIButton!
-    
-    private var register: Register!
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -71,7 +69,6 @@ class RegisterView: UIView {
             button.setTitleColor(UIColor.blue, for: .normal)
             button.layer.borderWidth = 1
             button.layer.borderColor = UIColor.blue.cgColor
-            button.addTarget(self, action: #selector(RegisterView.registerAction), for: .touchUpInside)
             return button
         }()
         
@@ -85,22 +82,17 @@ class RegisterView: UIView {
         self.addSubview(self.doneButton)
     }
     
-    private func getTexts() -> (username: String?, password: String?, confirmPassword: String?) {
+    public func getTexts() -> (username: String?, password: String?, confirmPassword: String?) {
         return (self.usernameField.text, self.passwordField.text, self.confirmPasswordField.text)
     }
     
-    @objc private func registerAction() {
-        let username = self.getTexts().username!
-        let password = self.getTexts().password!
-        let confirmPassword = self.getTexts().confirmPassword!
+    public func doneButtonAddTarget(_ vc: UIViewController, action: Selector, for event: UIControl.Event) {
         
-        self.register = Register(username, password, confirmPassword)
+        self.doneButton.addTarget(vc, action: action, for: event)
         
-        self.register.completeRegistration { (message) in
-            print(message)
-        }
-        
+
     }
     
+   
     
 }
