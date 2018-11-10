@@ -87,10 +87,7 @@ class RegisterView: UIView {
     }
     
     public func doneButtonAddTarget(_ vc: UIViewController, action: Selector, for event: UIControl.Event) {
-        
         self.doneButton.addTarget(vc, action: action, for: event)
-        
-
     }
     
    

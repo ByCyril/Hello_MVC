@@ -20,7 +20,6 @@ class MainController: UIViewController {
         self.registerView.doneButtonAddTarget(self, action: #selector(MainController.registerAction), for: .touchUpInside)
         self.view.addSubview(self.registerView)
         
-        
     }
     
     @objc func registerAction() {
@@ -31,7 +30,6 @@ class MainController: UIViewController {
         self.register = Register(username, password, confirmPassword)
         
         self.register.completeRegistration { (message) in
-            
             print(message)
         }
     }
